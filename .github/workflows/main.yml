@@ -22,4 +22,5 @@ jobs:
         java-version: '8'
         cache: 'gradle'
     - run: java -version    
+    - run: chmod 777 gradlew
     - run: ./gradlew build --no-daemon
