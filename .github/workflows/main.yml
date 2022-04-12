@@ -27,4 +27,28 @@ jobs:
     - run: | 
             cd build/libs
             ls -lrt
+    - uses: actions/upload-artifact@v3
+      with:
+        name: myartifact
+        path: build/libs/DevOps-as-a-service-0.0.1-SNAPSHOT.jar
+        
+  publish:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: AKIAVZTOI5R4OPNVJK57
+        aws-secret-access-key: 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
+        aws-region: us-east-1
+        
+    - run: aws --version
+    - run: aws s3 ls
+    - uses: actions/download-artifact@v3
+      with:
+        name: myartifact
+        
+    - run: ls -lrt
+        
             
