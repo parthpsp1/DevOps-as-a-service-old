@@ -52,5 +52,15 @@ jobs:
         
     - run: ls -lrt
     - run: aws s3 cp DevOps-as-a-service-0.0.1-SNAPSHOT.jar s3://parthprojectbucket/newapp-${GITHUB_RUN_ID}.jar
+    
+  deploy:
+  
+    runs-on: ubuntu-latest
+    needs: publish
+    
+    steps:
+    
+    - run: echo "${GITHUB_RUN_ID}"
+    
         
             
